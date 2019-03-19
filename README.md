@@ -20,8 +20,6 @@ Use git to clone https://github.com/gerscully/socialApp.git to your file system 
 
 ## Data Model Design.
 
-Diagram of app's data model (see example below) AND/OR a sample of the test data used (JSON or equivalent).
-
 ![][model]
 
 ## App Component Design.
@@ -36,9 +34,9 @@ A screenshot showing the component stories from Storybook
 
 . . . . . Screenshots of app's views (see example below) with appropriate captions (user regeneration and login views, if implemented, can be omitted) . . . . . . . 
 
-![][Screenshot_Welcome.JPG]
-![][Screenshot_Upcoming.JPG]
-![][Screenshot_Past.JPG]
+![][Screenshot_Welcome]
+![][Screenshot_Upcoming]
+![][Screenshot_Past]
 
 ## Routing.
 . . . . List each route supported and state the associated view . . . . . 
