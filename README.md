@@ -32,14 +32,11 @@ A screenshot showing the component stories from Storybook
 
 ## UI Design.
 
-. . . . . Screenshots of app's views (see example below) with appropriate captions (user regeneration and login views, if implemented, can be omitted) . . . . . . . 
-
 ![][Screenshot_Welcome]
 ![][Screenshot_Upcoming]
 ![][Screenshot_Past]
 
 ## Routing.
-. . . . List each route supported and state the associated view . . . . . 
 
 + /upcoming - filters the event array by evtStatus and displays only the upcoming events. Includes a form to add new events.
 + /past - filters the event array by evtStatus and displays only the past events.
