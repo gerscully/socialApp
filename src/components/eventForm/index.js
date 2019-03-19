@@ -43,7 +43,7 @@ class EventForm extends Component {
         <div className="form-group">
           <input type="text"
             className="form-control"
-            placeholder="Type"
+            placeholder="Type (Internal or External)"
             value={this.state.type}
             onChange={this.handleTypeChange}
           />
@@ -51,7 +51,7 @@ class EventForm extends Component {
         <div className="form-group">
           <input type="text"
             className="form-control"
-            placeholder="Event Status"
+            placeholder="Event Status (Upcoming or Past)"
             value={this.state.evtstatus}
             onChange={this.handleEvtstatusChange}
           />
