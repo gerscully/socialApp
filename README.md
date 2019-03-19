@@ -10,7 +10,7 @@ A Sports & Social website for our company. The idea is to be able to add details
  
  + Add upcoming events
  + Delete events
- + Edit events
+ + Edit events (edit form only appears in edit mode)
  + Expand/Collapse event information for cleaner UI
 
 
@@ -22,13 +22,13 @@ Use git to clone https://github.com/gerscully/socialApp.git to your file system 
 
 Diagram of app's data model (see example below) AND/OR a sample of the test data used (JSON or equivalent).
 
-![][Model.jpg]
+![][model]
 
 ## App Component Design.
 
 A screenshot showing the component stories from Storybook  
 
-![][Storybook.jpg]
+![][Storybook]
 
 
 
@@ -51,14 +51,16 @@ None are protected...yet!
 
 ## Extra features
 
-. . . . . Briefly explain any non-standard features, functional or non-functional, developed for the app. This would include user registeration and authentication, improved re-rendering policies, etc . . . . . .  
+Currently, the only 'features' are the filtering of the array to split the events into upcoming and past views, the use of toggle and card for a better display and similarly, only showing the edit form in the card-body once the edit button has been pressed.
 
 ## Independent learning.
 
-. . . . . State the non-standard aspects of React (or other related technologies) that you researched and applied in this assignment . . . . .  
+Researched some of the functions of lodash in order for the filter to work. I also researched (and had working) how to get the array from the API in the Index(App) and pass it to the children (Upcoming and Past) as 'render props' rather than component in the routing. In the end, I didn't need it, so I commented it out, but felt it was a worthwhile lesson as I can see future uses for passing props through the routes. Other items researched were for styling - Bootstrap and CSS.
 
 
 
-[model]: ./data.jpg
-[image3]: ./screen.png
-[stories]: ./storybook.png
+[model]: ./Model.jpg
+[Screenshot_Welcome]: ./Screenshot_Welcome.JPG
+[Screenshot_Upcoming]: ./Screenshot_Upcoming.JPG
+[Screenshot_Past]: ./Screenshot_Past.JPG
+[Storybook]: ./Storybook.jpg
