@@ -1,52 +1,53 @@
 # Assignment 1 - ReactJS app.
 
-Name: ... your name ...
+Name: Ger Scully
 
 ## Overview.
-...... A statement of the app concept and objectives (just a few lines) ........
+A Sports & Social website for our company. The idea is to be able to add details of upcoming events and hold information of past events.
 
 
  . . . . . List of user features (excluding user registration and authentication) . . . . 
  
- + Feature 1
- + Feature 2
- + Feature 3
- + etc
- + etc
+ + Add upcoming events
+ + Delete events
+ + Edit events
+ + Expand/Collapse event information for cleaner UI
+
 
 ## Installation requirements.
 
-. . . . Briefly state (to a third party) the installation steps necessary to run your app.
+Use git to clone https://github.com/gerscully/socialApp.git to your file system and run the application from the socialApp root folder using 'npm start' in command prompt window
 
 ## Data Model Design.
 
 Diagram of app's data model (see example below) AND/OR a sample of the test data used (JSON or equivalent).
 
-![][model]
+![][Model.jpg]
 
 ## App Component Design.
 
 A screenshot showing the component stories from Storybook  
 
-![][stories]
+![][Storybook.jpg]
 
-. . . . Explain any non-standard stories, if necessary . . . . . 
+
 
 ## UI Design.
 
 . . . . . Screenshots of app's views (see example below) with appropriate captions (user regeneration and login views, if implemented, can be omitted) . . . . . . . 
 
-![][image3]
+![][Screenshot_Welcome.JPG]
+![][Screenshot_Upcoming.JPG]
+![][Screenshot_Past.JPG]
 
 ## Routing.
 . . . . List each route supported and state the associated view . . . . . 
 
-+ /foos - displays all published foos
-+ /foos/:id - detail view of a particular foo (:id)
-+ etc
-+ etc
++ /upcoming - filters the event array by evtStatus and displays only the upcoming events. Includes a form to add new events.
++ /past - filters the event array by evtStatus and displays only the past events.
++ / - the 'home' screen (app component)
 
-Specify which, if any, of the above routes are protected (require login)
+None are protected...yet!
 
 ## Extra features
 
