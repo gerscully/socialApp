@@ -4,37 +4,48 @@ class StubAPI {
     constructor() {
         this.posts = [
             {
+                id: 0,
+                title: '2019 Kick-Off Lunch',
+                description: 'We will be having our 2019 Kick-Off Lunch on Thurs Jan 31st. A choice of lunches will be provided. All we ask is that you fill out the survey and let us know what events you would like to see this year',
+                type: 'Internal',
+                evtstatus: 'Past'
+			},
+            {
                 id: 1,
-                title: 'India - Tiger population sees 30% increase.',
-                link: 'http://www.bbc.com/news/world-asia-30896028',
-                username: 'jbloggs',
-                comments: [],
-                upvotes: 10
+                title: 'Restaurant Review',
+                description: 'Everetts Restaurant, High St, Waterford on Thurs Feb 28th at 6pm.',
+                type: 'External',
+                evtstatus: 'Past'
             },
             {
                 id: 2,
-                title: 'The button that is not.',
-                link: 'http://blog.nuclearsecrecy.com/2014/12/15/button-isnt/',
-                username: 'notme',
-                comments: [],
-                upvotes: 12
+                title: 'Valentines Day Quiz & Bingo',
+                description: 'Bingo at 1pm, Quiz throughout the afternoon. Valentines-themed prizes to be won!',
+                type: 'Internal',
+                evtstatus: 'Past'
             },
             {
                 id: 3,
-                title: 'Google Nears $1B Investment in SpaceX',
-                link: null,
-                username: 'notme',
-                comments: [],
-                upvotes: 12
+                title: 'Casual Night Out',
+                description: 'You wanted alcohol and food. Here you go. The Reg on Fri Mar 15th at 8pm',
+                type: 'External',
+                evtstatus: 'Past'
             },
             {
                 id: 4,
-                title: 'Coinbase Raises $75M from DFJ Growth, USAA, and More',
-                link: 'http://blog.coinbase.com/post/108642362357/coinbase-raises-75m-from-dfj-growth-usaa-nyse',
-                username: 'psmith',
-                comments: [],
-                upvotes: 2
+                title: 'Summer BBQ',
+                description: 'Food & Drinks at River Cottage on Fri Jul 11th at 8pm',
+                type: 'External',
+                evtstatus: 'Upcoming'
+            },
+            {
+                id: 5,
+                title: 'Mystery Bus Tour',
+                description: 'Sorry, its a secret!',
+                type: 'External',
+                evtstatus: 'Upcoming'
             }
+
         ];
     }
 
@@ -42,7 +53,7 @@ class StubAPI {
         return this.posts;
     }
 
-    add(title, link) {
+    add(title, description, type, evtstatus) {
         let id = 1;
         let last = _.last(this.posts);
         if (last) {
@@ -50,57 +61,34 @@ class StubAPI {
         }
         let len = this.posts.length;
         let newLen = this.posts.push({
-            id, title, link,
-            username: '',
-            comments: [],
-            upvotes: 0
+            id, title, 
+            description,
+            type, evtstatus
         });
         return newLen > len;
     }
 
-    upvote(id) {
-        let index = _.findIndex(this.posts,
-            (post) => post.id === id
+    delete(k) {
+        let elements = _.remove(this.posts,
+            (post) => post.id === k
         );
+        return elements;
+    }
+
+    update(key, ti, d, ty, es) {
+        // let index = _.findIndex(this.posts,
+        //     (post) => post.id === key
+        // );
+        let index = key;
+
         if (index !== -1) {
-            this.posts[index].upvotes += 1;
+            this.posts.splice(index, 1,
+                { id: index, title: ti, description: d, type: ty, evtstatus: es });
             return true;
         }
         return false;
     }
 
-    getPost(id) {
-        let index = _.findIndex(this.posts,
-            (post) => post.id === id
-        )
-        let result = index !== -1 ?
-            this.posts[index] :
-            null;
-        return result;
-    }
-
-    addComment(postId, c, n) {
-        let post = this.getPost(postId);
-        let id = 1;
-        let last = _.last(post.comments);
-        if (last) {
-            id = last.id + 1;
-        }
-        post.comments.push({
-            'id': id,
-            comment: c, author: n, upvotes: 0
-        });
-    }
-
-    upvoteComment(postId, commentId) {
-        let post = this.getPost(postId);
-        let index = _.findIndex(post.comments,
-            (c) => c.id === commentId
-        );
-        if (index !== -1) {
-            post.comments[index].upvotes += 1;
-        }
-    }
 }
 
 export default (new StubAPI());
