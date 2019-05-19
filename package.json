@@ -3,7 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.19.0",
     "bootstrap": "^3.3.6",
+    "dotenv": "^8.0.0",
+    "express": "^4.16.4",
     "lodash": "^2.4.2",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
@@ -20,6 +24,7 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -s ./public -p 9001 -c .storybook"
   },
+  "proxy": "http://localhost:8080",
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -30,6 +35,21 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@storybook/react": "^3.4.11"
-  }
+    "@storybook/react": "^3.4.11",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "nodemon": "^1.19.0"
+  },
+  "description": "Name: Ger Scully",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gerscully/socialApp.git"
+  },
+  "author": "gerscully",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gerscully/socialApp/issues"
+  },
+  "homepage": "https://github.com/gerscully/socialApp#readme"
 }

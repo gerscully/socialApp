@@ -3,25 +3,41 @@ import { withRouter } from 'react-router-dom';
 import socialBanner from './header.jpg';
 import EventList from './components/eventList';
 import EventForm from './components/eventForm';
-import api from './dataStore/stubAPI';
+import * as api from './api';
 import _ from 'lodash';
 import './Upcoming.css';
 
 class Upcoming extends Component {
-    addEventItem = (title, description, type, evtstatus) => {
-        api.add(title, description, type, evtstatus)
-        this.setState({})
+    state = { posts: [{}] };
+
+    async componentDidMount() {
+        const resp = await api.getAll();
+        this.setState({
+            posts: resp
+        });
     };
-    deleteEventList = (key) => {
-        api.delete(key)
-        this.setState({})
+
+    addEventItem = async (title, description, type, evtstatus) => {
+        await api.add(title, description, type, evtstatus)
+            .then(resp => {
+                const newPost = { "id": resp.id, "title": title, "description": description, "type": type, "evtstatus": evtstatus };
+                this.setState({ posts: this.state.posts.concat([newPost]) });
+            });
     };
+    deleteEventList = async (key) => {
+        try {
+            const resp = await api.del(key);
+            this.setState({
+                posts: resp
+            });
+        } catch (e) { alert(`Couldn't delete event: ${e}`) }
+    };
+
     render() {
-        let posts = _.sortBy(api.getAll(),
-            (post) => post.id
+        let posts = _.sortBy(this.state.posts,
+            (post) => post._id
         );
-        // let filteredPosts = _.filter(this.props.posts, (e) => (e.evtstatus.toLowerCase() === 'upcoming'))
-        let filteredPosts = _.filter(posts, (e) => (e.evtstatus.toLowerCase() === 'upcoming'))
+        let filteredPosts = _.filter(posts, (e) => (e.evtstatus === 'Upcoming' || e.evtstatus === 'upcoming'))
 
         return (
             <div>

@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { Collapse, Button, CardBody, Card } from 'reactstrap';
 import buttons from '../../config/buttonsConfig';
-import api from '../../dataStore/stubAPI'
+import * as api from '../../../src/api';
 import './eventItem.css';
 
 class EventItem extends Component {
@@ -10,27 +10,27 @@ class EventItem extends Component {
     constructor(props) {
         super(props);
         this.toggle = this.toggle.bind(this);
-        this.state = { collapse: false };
-    }
-    state = {
-        status: '',
-        id: this.props.post.id,
-        title: this.props.post.title,
-        description: this.props.post.description,
-        type: this.props.post.type,
-        evtstatus: this.props.post.evtstatus,
-        previousDetails: {
-            id: this.props.post.id,
-            title: this.props.post.title,
-            description: this.props.post.description,
-            type: this.props.post.type,
-            evtstatus: this.props.post.evtstatus
-        }
+		this.state = {
+            collapse: false,
+			status: '',
+			_id: this.props.post._id,
+			title: this.props.post.title,
+			description: this.props.post.description,
+			type: this.props.post.type,
+			evtstatus: this.props.post.evtstatus,
+			previousDetails: {
+				_id: this.props.post._id,
+				title: this.props.post.title,
+				description: this.props.post.description,
+				type: this.props.post.type,
+				evtstatus: this.props.post.evtstatus
+			}
+		}
     };
     handleEdit = () => this.setState(
         {
             status: 'edit',
-            id: this.props.post.id,
+            _id: this.props.post._id,
             title: this.props.post.title,
             description: this.props.post.description,
             type: this.props.post.type,
@@ -46,22 +46,22 @@ class EventItem extends Component {
         if (!updatedTitle || !updatedDescription || !updatedType || !updatedEvtstatus) {
             return;
         }
-        let { id, title, description, type, evtstatus } = this.state;
+        let { _id, title, description, type, evtstatus } = this.state;
         this.setState({
             status: '',
-            previousDetails: { id, title, description, type, evtstatus }
+            previousDetails: { _id, title, description, type, evtstatus }
         })
-        api.update(id, updatedTitle, updatedDescription, updatedType, updatedEvtstatus);
+        api.update(_id, updatedTitle, updatedDescription, updatedType, updatedEvtstatus);
         this.setState({ status: ''});
     };
-    handleTitleChange = (e) => this.setState({ id: this.props.post.id, title: e.target.value });
-    handleDescriptionChange = (e) => this.setState({ id: this.props.post.id, description: e.target.value });
-    handleTypeChange = (e) => this.setState({ id: this.props.post.id, type: e.target.value });
-    handleEvtstatusChange = (e) => this.setState({ id: this.props.post.id, evtstatus: e.target.value });
-    handleDelete = () => this.setState({ status: 'del', id: this.props.post.id });
+    handleTitleChange = (e) => this.setState({ _id: this.props.post._id, title: e.target.value });
+    handleDescriptionChange = (e) => this.setState({ _id: this.props.post._id, description: e.target.value });
+    handleTypeChange = (e) => this.setState({ _id: this.props.post._id, type: e.target.value });
+    handleEvtstatusChange = (e) => this.setState({ _id: this.props.post._id, evtstatus: e.target.value });
+    handleDelete = () => this.setState({ status: 'del', _id: this.props.post._id });
     handleConfirm = (e) => {
         e.preventDefault();
-        this.props.deleteHandler(this.state.id);
+        this.props.deleteHandler(this.state._id);
         this.setState({ status: '' });
         this.setState({ collapse: false });
     };
@@ -112,9 +112,9 @@ class EventItem extends Component {
                                         <p></p>
                                     ] :
                                     [
-                                        <p key={'type'} ><u>{this.props.post.type}</u></p>,
+                                        <p key={'type'} ><u>{this.state.type}</u></p>,
                                         <p></p>,
-                                        <p key={'description'} >{this.props.post.description}</p>,
+                                        <p key={'description'} >{this.state.description}</p>,
                                         <p></p>,
                                     ]
                                 }

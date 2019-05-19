@@ -4,12 +4,11 @@ import EventItem from '../eventItem';
 
 export default class EventList extends Component {
     render() {
-        let list = this.props.posts.map(
-            (post, index) =>
-                <EventItem key={index}
-                    post={post}
+        const list = this.props.posts.map(
+            (p) => {return <EventItem key={p._id}  
+                    post={p}
                     deleteHandler={this.props.deleteHandler} />
-        );
+            });
         return (
             <div className="col-md-12">
                 <ol className="Events">

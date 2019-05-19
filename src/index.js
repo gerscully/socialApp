@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
-// import api from './dataStore/stubAPI';
-// import _ from 'lodash';
 import Upcoming from './Upcoming';
 import Past from './Past';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
